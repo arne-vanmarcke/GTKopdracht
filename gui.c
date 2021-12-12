@@ -2,12 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "PJ_RPI.h"
-typedef struct _Gpio{
-    int nr;
-    char role[10];
-    int state;
-}_gpio;
-
 typedef struct info{
     GtkWidget *SpinBtn;
     GtkWidget *guiItem;
@@ -54,31 +48,8 @@ int GetInput(GtkWidget *wid, gpointer ptr){
     gtk_label_set_text(GTK_LABEL(info->guiItem),buff);
 }
 
-/*int setupPins(_gpio *_gpio, int gpioAmount){
-    if(map_peripheral(&gpio)==-1){
-        printf("Failed to map the physical GPIO registers into the virtual memory space.\n");
-        return -1;
-    }
-    
-    for(int i=0; i<gpioAmount; i++){
-        if(!strcmp((_gpio+i)->role, "OUTPUT"))
-            OUT_GPIO((_gpio+i)->nr);
-        else
-            INP_GPIO((_gpio+i)->nr);
-    }
-    return 0;
-}*/
-
 int main (int argc, char *argv[])
 {
-    /*_gpio gIn[2]={{23,"INPUT",0},{24,"INTPUT",0}};
-    _gpio gOut[2]={{17,"OUTPUT",0},{27,"OUTPUT",0}};
-
-    if(setupPins(&gIn[0], sizeof(gIn)/sizeof(gIn[0]))==-1)
-        return 0;
-    if(setupPins(&gOut[0], sizeof(gOut)/sizeof(gOut[0]))==-1)
-        return 0;*/
-
     gtk_init (&argc, &argv);
     GtkObject *adj = gtk_adjustment_new(0,0,27,1,1,1);
     GtkObject *adjIn = gtk_adjustment_new(0,0,27,1,1,1);
